@@ -1,13 +1,15 @@
-#include "TwoDArray.h"
 #include <iostream>
+#include <string>
+
+#include "TwoDArray.h"
 
 using std::cout;
-using std::end1;
+using std::endl;
 
 int main() {
   TwoDArray<int>* i = new TwoDArray<int>(5, 5, 0);
 
-  TwoDArray<std::string>* s = new TwoDArray(5, 5, "o");
+  TwoDArray<std::string>* s = new TwoDArray<std::string>(5, 5, "o");
 
   i->insert(1, 1, 1);
   i->insert(1, 3, 1);
@@ -25,4 +27,6 @@ int main() {
   s->insert(2, 0, "West");
 
   s->print();
+
+  return 0;
 }

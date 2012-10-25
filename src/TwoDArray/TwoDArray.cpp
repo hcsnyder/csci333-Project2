@@ -1,7 +1,7 @@
 #include "TwoDArray.h"
 #include <iostream>
 #include <assert.h>
-#include<string>
+#include <string>
 
 //initializes the 2D Array
 template <typename T>
@@ -9,15 +9,15 @@ TwoDArray<T>::TwoDArray(int r, int c, T def) {
   assert(r > 0 && c > 0);
   numRows = r;
   numCols = c;
-  default = def;
-  T** theArray = new T*[r];
+  defSpace = def;
+  theArray = new T*[r];
   for(int i=0; i<r; i++) {
     theArray[i] = new T[c];
   }
   //sets all values to the default
   for(int i=0; i<r; i++) {
     for(int j=0; j<c; j++) {
-    theArray[i][j] = default;
+    theArray[i][j] = defSpace;
     }
   } 
 }
@@ -35,13 +35,13 @@ for(int i=0; i<numRows; i++) {
 template<typename T>
 void TwoDArray<T>::insert(int r, int c, T value) {
   assert(r < numRows && c < numCols);
-  assert(value != default);
+  assert(value != defSpace);
   theArray[r][c] = value;
 }
 
 //get value at row r, column c
 template<typename T>
-T TwoDArray<T>::acess(int r, int c) {
+T TwoDArray<T>::access(int r, int c) {
   assert(r < numRows && c < numCols);
   T result = theArray[r][c];
   return result;
@@ -51,19 +51,18 @@ T TwoDArray<T>::acess(int r, int c) {
 template<typename T>
 void TwoDArray<T>::remove(int r, int c) {
   assert(r < numRows && c < numCols);
-  assert(theArray[r][c] != default);
-  theArray[r][c] = default;
+  theArray[r][c] = defSpace;
 }
 
 //print the 2D Array
 template<typename T>
 void TwoDArray<T>::print() {
-  for(i=0; i<numRows; i++) {
-    for(j=0;j<numCols; i++) {
+  for(int i=0; i<numRows; i++) {
+    for(int j=0;j<numCols; i++) {
       std::cout << theArray[i][j];
       std::cout << " ";
     }
-    std::endl;
+    std::cout << std::endl;
   }
 }
 
