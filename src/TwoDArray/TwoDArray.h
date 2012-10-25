@@ -7,7 +7,7 @@ class TwoDArray {
     int** theArray;
     int numRows;
     int numCols;
-    T default;
+    T defSpace;
     int cap;
     T value;
 
@@ -20,3 +20,6 @@ class TwoDArray {
     void print();
     int getNumRows();
     int getNumCols();
+};
+
+#endif

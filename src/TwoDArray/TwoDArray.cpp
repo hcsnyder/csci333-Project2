@@ -9,7 +9,7 @@ TwoDArray<T>::TwoDArray(int r, int c, T def) {
   assert(r > 0 && c > 0);
   numRows = r;
   numCols = c;
-  default = def;
+  defSpace = def;
   T** theArray = new T*[r];
   for(int i=0; i<r; i++) {
     theArray[i] = new T[c];
@@ -17,7 +17,7 @@ TwoDArray<T>::TwoDArray(int r, int c, T def) {
   //sets all values to the default
   for(int i=0; i<r; i++) {
     for(int j=0; j<c; j++) {
-    theArray[i][j] = default;
+    theArray[i][j] = defSpace;
     }
   } 
 }
@@ -35,7 +35,7 @@ for(int i=0; i<numRows; i++) {
 template<typename T>
 void TwoDArray<T>::insert(int r, int c, T value) {
   assert(r < numRows && c < numCols);
-  assert(value != default);
+  assert(value != defSpace);
   theArray[r][c] = value;
 }
 
@@ -51,8 +51,8 @@ T TwoDArray<T>::acess(int r, int c) {
 template<typename T>
 void TwoDArray<T>::remove(int r, int c) {
   assert(r < numRows && c < numCols);
-  assert(theArray[r][c] != default);
-  theArray[r][c] = default;
+  assert(theArray[r][c] != defSpace);
+  theArray[r][c] = defSpace;
 }
 
 //print the 2D Array
