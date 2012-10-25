@@ -8,11 +8,6 @@ class TwoDArray {
     int numRows;
     int numCols;
     T defSpace;
-<<<<<<< HEAD
-=======
-    int cap;
-    T value;
->>>>>>> a7332cf724785c0127ea90f42099cb3c9512439e
 
   public:
     TwoDArray<T> (int r, int c, T def);
@@ -23,11 +18,5 @@ class TwoDArray {
     void print();
     int getNumRows();
     int getNumCols();
-<<<<<<< HEAD
-
 };
-=======
-};
-
->>>>>>> a7332cf724785c0127ea90f42099cb3c9512439e
 #endif

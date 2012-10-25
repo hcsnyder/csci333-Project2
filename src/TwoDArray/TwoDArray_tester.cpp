@@ -1,11 +1,6 @@
 #include <iostream>
-<<<<<<< HEAD
 #include <string>
-
 #include "TwoDArray.h"
-=======
-#include<string>
->>>>>>> a7332cf724785c0127ea90f42099cb3c9512439e
 
 using std::cout;
 using std::endl;
