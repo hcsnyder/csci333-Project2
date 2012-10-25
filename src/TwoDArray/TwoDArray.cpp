@@ -10,7 +10,11 @@ TwoDArray<T>::TwoDArray(int r, int c, T def) {
   numRows = r;
   numCols = c;
   defSpace = def;
+<<<<<<< HEAD
   theArray = new T*[r];
+=======
+  T** theArray = new T*[r];
+>>>>>>> a7332cf724785c0127ea90f42099cb3c9512439e
   for(int i=0; i<r; i++) {
     theArray[i] = new T[c];
   }
@@ -51,6 +55,10 @@ T TwoDArray<T>::access(int r, int c) {
 template<typename T>
 void TwoDArray<T>::remove(int r, int c) {
   assert(r < numRows && c < numCols);
+<<<<<<< HEAD
+=======
+  assert(theArray[r][c] != defSpace);
+>>>>>>> a7332cf724785c0127ea90f42099cb3c9512439e
   theArray[r][c] = defSpace;
 }
 
