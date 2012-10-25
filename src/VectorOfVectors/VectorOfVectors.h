@@ -5,12 +5,7 @@
 template <typename T>
 class VectorOfVectors {
   private:
-    if(T = int) {
-      vector<int>** theArray;
-    }
-    else if(T = std::string) {
-      vector<std::string>** theArray;
-    }
+    std::vector<std::vector<T> > theArray;
     T defSpace;
 
   public:

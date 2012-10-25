@@ -9,48 +9,48 @@ template <typename T>
 VectorOfVectors<T>::VectorOfVectors(int r, int c, T def) {
   assert(r > 0 && c > 0);
   defSpace = def;
-  theArray (r, defSpace);
-  theArray.assign(theArray.max_size(), vector<T> (c, defSpace));
+  std::vector<T> col(c, defSpace);
+  std::vector<std::vector<T> > theArray(r, col);
 }
 
 //destructor
 template<typename T>
 VectorOfVectors<T>::~VectorOfVectors() {
   for(int i=0; i<theArray.size(); i++) {
-    delete[] theArray.at(i);
+    delete theArray.at(i);
   }
-  delete[] theArray;
+  delete theArray;
 }
 
 //inserts value v at row r and column c
 template<typename T>
 void VectorOfVectors<T>::insert(int r, int c, T value) {
-  assert(r <= theArray.size() && c <= theArray.at(0.size()));
+  assert(r <= theArray.size() && c <= theArray[0].size());
   assert(value != defSpace);
-  theArray.at(r.at(c)) = value;
+  theArray[r][c] = value;
 }
 
 //get value at row r, column c
 template<typename T>
 T VectorOfVectors<T>::access(int r, int c) {
-  assert(r <=theArray.size() && c <= theArray.at(0.size()));
-  return theArray.at(r.at(c));
+  assert(r <= theArray.size() && c <= theArray[0].size());
+  return theArray[r][c];
 }
 
 //set value at row r and column c back to default
 template<typename T>
 void VectorOfVectors<T>::remove(int r, int c) {
-  assert(r <=theArray.size() && c <= theArray.at(0.size()));
-  assert(theArray.at(r.at(c)) != defSpace);
-  theArray.at(r.at(c)) = defSpace;
+  assert(r <= theArray.size() && c <= theArray[0].size());
+  assert(theArray[r][c] != defSpace);
+  theArray[r][c] = defSpace;
 }
 
 //print the 2D array
 template<typename T>
 void VectorOfVectors<T>::print() {
   for(int i=0; i<theArray.size(); i++) {
-    for(int j=0; j<theArray.at(0.size()); j++) {
-      std::cout << theArray.at(i.at(j));
+    for(int j=0; j<theArray[0].size(); j++) {
+      std::cout << theArray[i][j];
       std::cout << " ";
     }
     std::cout << std::endl;
@@ -66,8 +66,9 @@ int VectorOfVectors<T>::getNumRows() {
 //get number of columns for test
 template<typename T>
 int VectorOfVectors<T>::getNumCols() {
-  return theArray.at(0.size());
+  return theArray[0].size();
 }
 
 template class VectorOfVectors<int>;
+template class VectorOfVectors<double>;
 template class VectorOfVectors<std::string>;
