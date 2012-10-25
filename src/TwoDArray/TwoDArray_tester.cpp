@@ -2,8 +2,6 @@
 #include <string>
 #include "TwoDArray.h"
 
-using std::cout;
-using std::endl;
 
 int main() {
   TwoDArray<int>* i = new TwoDArray<int>(5, 5, 0);
@@ -19,11 +17,12 @@ int main() {
 
   i->print();
 
+  std::cout << std::endl;
 
-  s->insert(0, 2, "North");
-  s->insert(4, 2, "South");
-  s->insert(2, 4, "East");
-  s->insert(2, 0, "West");
+  s->insert(0, 2, "N");
+  s->insert(4, 2, "S");
+  s->insert(2, 4, "E");
+  s->insert(2, 0, "W");
 
   s->print();
 

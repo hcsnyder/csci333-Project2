@@ -59,7 +59,7 @@ void TwoDArray<T>::remove(int r, int c) {
 template<typename T>
 void TwoDArray<T>::print() {
   for(int i=0; i<numRows; i++) {
-    for(int j=0;j<numCols; i++) {
+    for(int j=0;j<numCols; j++) {
       std::cout << theArray[i][j];
       std::cout << " ";
     }
