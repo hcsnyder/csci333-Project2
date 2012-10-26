@@ -5,7 +5,8 @@
 template<typename T>
 Node<T>::Node(int r, int c, T v) {
   value = v;
-  nextRow = 0;
+  row = r;
+  col = c;
   nextCol = 0;
 }
 
