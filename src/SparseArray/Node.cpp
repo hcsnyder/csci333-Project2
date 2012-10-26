@@ -16,18 +16,18 @@ T Node<T>::getValue() {
 }
 
 template<typename T>
-Node<T>*& Node<T>::getNextRow() {
-  return nextRow;
+int Node<T>::getRow() {
+  return row;
+}
+
+template<typename T>
+int Node<T>::getCol() {
+  return col;
 }
 
 template<typename T>
 Node<T>*& Node<T>::getNextCol() {
   return nextCol;
-}
-
-template<typename T>
-void Node<T>::setNextRow(Node<T>& n) {
-  nextRow = &n;
 }
 
 template<typename T>

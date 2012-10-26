@@ -2,22 +2,50 @@
 #define __NODE_H__
 
 template <typename T>
-class Node {
+class CellNode {
   private:
     T value;
     int row;
     int col;
-    Node<T>* nextRow;
-    Node<T>* nextCol;
+    CellNode<T>* newNode;
+    CellNode<T>* colNext;
+    CellNode<T>* rowNext;
 
   public:
-    Node<T>(int r, int c, T v);
+    CellNode<T>(int r, int c, T v);
     T getValue();
     int getRow();
     int getCol();
-    Node<T>*& getNextRow();
-    Node<T>*& getNextCol();
-    void setNextRow(Node<T>& n);
-    void setNextCol(Node<T>& n);
+    CellNode<T>*& getColNext();
+    CellNode<T>*& getRowNext();
+    void setColNext(CellNode<T>& n);
+    void setRowNext(CellNode<T>& n);
 };
+
+class rowNode {
+  private:
+    int value;
+    rowNode* next;
+
+  public:
+    rowNode(int v);
+    ~rowNode();
+    int getValue();
+    rowNode* getNext();
+    void setNext(rowNode* &n);
+};
+
+class colNode {
+  private:
+    int value;
+    colNode* next;
+
+  public:
+    colNode(int v);
+    ~colNode();
+    int getValue();
+    colNode* getNext();
+    void setNext(colNode* &n);
+};
+
 #endif

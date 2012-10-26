@@ -3,20 +3,23 @@
 
 #include "LinkedLists.h"
 
-template<typename T>
-LinkedListRow<T>::LinkedListRow() {
-  front = 0;
+LinkedListRow::LinkedListRow() {
+  front = -1;
   s=0;
 }
 
-template<typename T>
-LinkedListRow<T>::~LinkedListRow() {
+LinkedListRow::~LinkedListRow() {
 
 }
 
-template<typename T>
-void LinkedListRow<T>::insert(int r) {
-  Node<T>** curr = &front;
-  
-  
+void LinkedListRow::insert(int r) {
+  Node** newNode = newNode(value);
+  if(front == -1) {
+    front = newNode;
+  }
+  else if(front->get
+}
+
+void LinkedListRow::remove(int r) {
+
 }
