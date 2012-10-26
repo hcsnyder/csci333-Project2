@@ -4,18 +4,22 @@
 
 #include "LinkedLists.h"
 
+template<typename T>
 LinkedListRow::LinkedListRow() {
   front = 0;
   s=0;
 }
 
+template<typename T>
 LinkedListRow::~LinkedListRow() {
 
 }
 
-void LinkedListRow::insert(int r) {
+template<typename T>
+void LinkedListRow<T>::insert(CellNode<T>& n) {
   rowNode* curr = front;
   rowNode* temp = front; 
+  int r = n->getRow();
   while(curr != 0 && curr->getValue() < r) {
     temp = curr;
     curr = curr->getNext();
@@ -24,24 +28,55 @@ void LinkedListRow::insert(int r) {
     rowNode* newNode = new RowNode(r);
     temp->setNext(newNode);
     newNode->setNext(curr);
+    newNode->setCellNode(n);
     s++;
+  }
+  else if(n->getCol < curr->getCellNode()->getCol()){
+    n->setRowNext(curr->getCellNode());
+  }
+  else {
+    CellNode* currCell = curr->getCellNode();
+    CellNode* tempCell = curr->getCellNode();
+    while(curr != 0 && curr->getCol() < n->getCol()) {
+      tempCell = currCell;
+      currCell = currCell-> getRowNext();
+    }
+    if(currCell->getCol() != n->getCol()) {
+      tempCell->setRowNext(n);
+      n->setRowNext(currCell);
+    }
   }
 }
 
-void LinkedListRow::remove(int r) {
+template<typename T>
+void LinkedListRow<T>::remove(CellNode<T>& n) {
   if( front == 0) {
     break;
   }
   rowNode* curr = front;
   rowNode* temp = front;
-  while(curr->getNext() != 0 && curr->getValue() < r) {
-  temp = curr;
-  curr = curr->getNext();
+  else if(front->getCellNode()->getRowNext() == 0) {
+    int r = n->getRow();
+    while(curr->getNext() != 0 && curr->getValue() < r) {
+      temp = curr;
+      curr = curr->getNext();
+    }
+    if(curr->getValue() == r) {
+      temp->setNext(temp->getNext()->getNext());
+      s--;
+    } 
+  } 
+  else {
+    CellNode* currCell = curr->getCellNode();
+    CellNode* tempCell = curr->getCellNode();
+    while(currCell->getRowNext() != 0 && currCell->getCol() < n->getCol()) {
+      tempCell = currCell;
+      currCell = currCell->getRowNext();
+    }
+    if(currCell->getCol() == n->getCol() {
+      tempCell->setRowNext(tempCell->getRowNext()->getRowNext());
+    }
   }
-  if(curr->getValue() == r) {
-    temp->setNext(temp->getNext()->getNext());
-    s--;
-  }  
 }
 
 int LinkedListRow::size() {

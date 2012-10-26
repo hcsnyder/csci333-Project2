@@ -49,6 +49,7 @@ void CellNode<T>::setRowNext(CellNode<T>& n) {
 rowNode::rowNode(int r) {
   value = r;
   next = 0;
+  nextCell = 0;
 }
 
 int rowNode::getValue() {
@@ -59,13 +60,24 @@ rowNode* rowNode::getNext() {
   return next;
 }
 
-void rowNode::setNext(rowNode* &n) {
+void rowNode::setNext(rowNode& n) {
   next = &n;
+}
+
+template<typename T>
+CellNode<T>*& rowNode::getCellNode() {
+  return nextCell;
+}
+
+template<typename T>
+void rowNode::setCellNode(CellNode<T>& n) {
+  nextCell = &n;
 }
 
 colNode::colNode(int c) {
   value = c;
   next = 0;
+  nextCell = 0;
 }
 
 int colNode::getValue() {
@@ -78,6 +90,16 @@ colNode* colNode::getNext() {
 
 void colNode::setNext(colNode* &n) {
   next = &n;
+}
+
+template<typename T>
+CellNode<T>*& colNode::getCellNode() {
+  return nextCell;
+}
+
+template<typename T>
+void colNode::setCellNode(CellNode<T>& n) {
+  nextCell = &n;
 }
 
 template class Node<int>;

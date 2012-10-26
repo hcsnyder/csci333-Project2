@@ -6,28 +6,28 @@
 template<typename T>
 class LinkedListRow {
   private:
-    Node* front;
+    rowNode* front;
     int s;
   
   public:
     LinkedListRow<T>();
     ~LinkedListRow<T>();
-    void insert(int r);
-    void remove(int r);
+    void insert(CellNode<T>& n);
+    void remove(CellNode<T>& n);
     int size();
 };
 
 template<typename T>
 class LinkedListCol {
   private:
-    Node* front;
+    colNode* front;
     int s;
 
   public:
     LinkedListCol<T>();
     ~LinkedListCol<T>();
-    void insert(int c);
-    void remove(int c);
+    void insert(CellNode<T>& n);
+    void remove(CellNode<>T& n);
     int size();
 };
 
