@@ -29,7 +29,6 @@ class rowNode {
 
   public:
     rowNode(int v);
-    ~rowNode();
     int getValue();
     rowNode* getNext();
     void setNext(rowNode* &n);
@@ -42,7 +41,6 @@ class colNode {
 
   public:
     colNode(int v);
-    ~colNode();
     int getValue();
     colNode* getNext();
     void setNext(colNode* &n);
