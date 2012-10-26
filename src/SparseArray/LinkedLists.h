@@ -6,7 +6,7 @@
 template<typename T>
 class LinkedListRow {
   private:
-    Node<T>* front;
+    Node* front;
     int s;
   
   public:
@@ -20,7 +20,7 @@ class LinkedListRow {
 template<typename T>
 class LinkedListCol {
   private:
-    Node<T>* front;
+    Node* front;
     int s;
 
   public:

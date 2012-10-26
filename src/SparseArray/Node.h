@@ -22,28 +22,36 @@ class CellNode {
     void setRowNext(CellNode<T>& n);
 };
 
+template<typename T>
 class rowNode {
   private:
     int value;
     rowNode* next;
+    CellNode* nextCell;
 
   public:
     rowNode(int v);
     int getValue();
-    rowNode* getNext();
-    void setNext(rowNode* &n);
+    rowNode*& getNext();
+    void setNext(rowNode& n);
+    CellNode<T>*& getCellNode();
+    void setCellNode(CellNode<T>& n);
 };
 
+template<typename T>
 class colNode {
   private:
     int value;
     colNode* next;
+    CellNode* nextCell;
 
   public:
     colNode(int v);
     int getValue();
-    colNode* getNext();
-    void setNext(colNode* &n);
+    colNode*& getNext();
+    void setNext(colNode& n);
+    CellNode<T>*& getCellNode();
+    void setCellNode(CellNode<T>& n);
 };
 
 #endif
