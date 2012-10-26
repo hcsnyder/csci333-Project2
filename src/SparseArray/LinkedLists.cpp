@@ -31,13 +31,13 @@ void LinkedListRow<T>::insert(CellNode<T>& n) {
     newNode->setCellNode(n);
     s++;
   }
-  else if(n->getCol < curr->getCellNode()->getCol()){
+  else if(n->getCol() < curr->getCellNode()->getCol()){
     n->setRowNext(curr->getCellNode());
   }
   else {
     CellNode* currCell = curr->getCellNode();
     CellNode* tempCell = curr->getCellNode();
-    while(curr != 0 && curr->getCol() < n->getCol()) {
+    while(currCell != 0 && currCell->getCol() < n->getCol()) {
       tempCell = currCell;
       currCell = currCell-> getRowNext();
     }
@@ -79,22 +79,46 @@ void LinkedListRow<T>::remove(CellNode<T>& n) {
   }
 }
 
+template<typename T>
+Node<T>*& LinkedListRow::access(int r, int c) {
+  if(front != 0) {
+    rowNode* curr = front;
+    while(curr != 0 && curr->getValue() < r) {
+      curr = curr->getNext();
+    }
+    if(curr->getValue() == r) {
+      CellNode* currCell = curr->getCellNode();
+      while(currCell != 0 && curr->getCol < c) {
+        currCell = currCell->getRowNext();
+      }
+      if(currCell->getCol == c) {
+        return currCell;
+      }
+    }
+  }
+}
+
+template<typename T>
 int LinkedListRow::size() {
   return s;
 }
 
+template<typename T>
 LinkedListCol::LinkedListCol() {
   front = 0;
   s = 0;
 }
 
+template<typename T>
 LinkedListCol::~LinkedListCol() {
 
 }
 
-void LinkedListCol::insert(int c) {
+template<typename T>
+void LinkedListCol::insert(CellNode<T>& n) {
   colNode* curr = front;
   colNode* temp = front;
+  int c = n->getCol();
   while(curr != 0 && curr->getValue() < c) {
     temp = curr;
     curr = curr->getNext();
@@ -103,26 +127,57 @@ void LinkedListCol::insert(int c) {
     rowNode* newNode = new RowNode(r);
     temp->setNext(newNode);
     newNode->setNext(curr);
+    newNode->setCellNode(n);
     s++;
   }
+  else if(n->getRow() < curr->getCellNode->getRow()) {
+    n->setColNext(curr->getCellNode());
+  }
+  else {
+    CellNode* currCell = curr->getCellNode();
+    cellNode* tempCell = curr->getCellNode();
+    while(currCell != 0 && currCell->getRow() < n->getRow()) {
+      tempCell = currCell;
+      currCell = currCell->getColNext();
+    }
+    if(currCell->getRow() != n->getRow()) {
+      tempCell->setColNext(n);
+      n->setColNext(currCell);
+    } 
+  }
 }
-
-void LinkedListCol::remove(int c) {
+template<typename T>
+void LinkedListCol::remove(CellNode<T>& n) {
   if(front == 0) {
     break;
   }
   colNode* curr = front;
   colNode* temp = front;
-  while(curr->getNext() != 0 && curr->getValue() < c) {
-    temp = curr;
-    curr = curr->getNext();
+  else if(front->getCellNode()->getColNext() == 0) {
+    int c = n->getCol();
+    while(curr->getNext() != 0 && curr->getValue() < c) {
+      temp = curr;
+      curr = curr->getNext();
+    }
+    if(curr->getValue() == c) {
+      temp->setNext(temp->getNext()->getNext();
+      s--;
+    }
   }
-  if(curr->getValue() == c) {
-    temp->setNext(temp->getNext()->getNext();
-    s--;
+  else {
+    CellNode* currCell = curr->getCellNode();
+    CellNode* tempCell = curr->getCellNode();
+    while(currCell->getColNext() != 0 && currCell->getCol() < n->getCol()) {
+      tempCell = curr Cell;
+      currCell = currCell->getColNext();
+    }
+    if(currCell->getRow() == n->getRow() {
+      tempCell->setColNext(tempCell->getRowNext()->getRowNext());
+    }
   }
 }
 
+template<typename T>
 int LinkedListCol::size() {
   return s;
 }

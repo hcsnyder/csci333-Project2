@@ -14,6 +14,7 @@ class LinkedListRow {
     ~LinkedListRow<T>();
     void insert(CellNode<T>& n);
     void remove(CellNode<T>& n);
+    Node<T>*& access(int r, int c);
     int size();
 };
 
