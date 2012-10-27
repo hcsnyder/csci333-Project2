@@ -7,6 +7,11 @@ template<typename T>
 class SparseArray {
   private:
     T defSpace;
+    LinkedListRow theArrayRow;
+    LinkedListCol theArrayCol;
+    int row;
+    int col;
+
   public:
     SparseArray<T> (int r, int c, T def);
     ~SparseArray<T>();
