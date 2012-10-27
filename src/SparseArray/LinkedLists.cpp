@@ -41,8 +41,8 @@ void LinkedListRow<T>::insert(CellNode<T>& n) {
       tempCell = currCell;
       currCell = currCell-> getRowNext();
     }
-    if(currCell->getCol() != n->getCol()) {
-      tempCell->setRowNext(n);
+    tempCell->setRowNext(n);
+    if(currCell != 0) {
       n->setRowNext(currCell);
     }
   }
@@ -116,65 +116,39 @@ LinkedListCol::~LinkedListCol() {
 
 template<typename T>
 void LinkedListCol::insert(CellNode<T>& n) {
-  colNode* curr = front;
-  colNode* temp = front;
-  int c = n->getCol();
-  while(curr != 0 && curr->getValue() < c) {
-    temp = curr;
+  rowNode* curr = front;
+  while(curr->getValue() != n->getCol()) {
     curr = curr->getNext();
   }
-  if(curr->getValue() != c) {
-    rowNode* newNode = new RowNode(r);
-    temp->setNext(newNode);
-    newNode->setNext(curr);
-    newNode->setCellNode(n);
-    s++;
-  }
-  else if(n->getRow() < curr->getCellNode->getRow()) {
-    n->setColNext(curr->getCellNode());
+  if(curr->getCellNode == 0) {
+    curr->setCellNode(n);
   }
   else {
     CellNode* currCell = curr->getCellNode();
-    cellNode* tempCell = curr->getCellNode();
+    CellNode* tempCell = currCell;
     while(currCell != 0 && currCell->getRow() < n->getRow()) {
       tempCell = currCell;
       currCell = currCell->getColNext();
     }
-    if(currCell->getRow() != n->getRow()) {
-      tempCell->setColNext(n);
+    tempCell->setColNext(n);
+    if(currCell != 0) {
       n->setColNext(currCell);
-    } 
+    }
   }
 }
 template<typename T>
-void LinkedListCol::remove(CellNode<T>& n) {
-  if(front == 0) {
-    break;
+void LinkedListCol::remove(int r, int c) {
+  rowNode* curr = front;
+  while(curr->getValue() != c) {
+    curr = curr->getNext();
   }
-  colNode* curr = front;
-  colNode* temp = front;
-  else if(front->getCellNode()->getColNext() == 0) {
-    int c = n->getCol();
-    while(curr->getNext() != 0 && curr->getValue() < c) {
-      temp = curr;
-      curr = curr->getNext();
-    }
-    if(curr->getValue() == c) {
-      temp->setNext(temp->getNext()->getNext();
-      s--;
-    }
+  CellNode* tempCell = curr->getCellNode();
+  CellNode* currCell = tempCell;
+  while(currCell != 0) {
+    tempCell = currCell;
+    currCell = currCell->getColNext();
   }
-  else {
-    CellNode* currCell = curr->getCellNode();
-    CellNode* tempCell = curr->getCellNode();
-    while(currCell->getColNext() != 0 && currCell->getCol() < n->getCol()) {
-      tempCell = curr Cell;
-      currCell = currCell->getColNext();
-    }
-    if(currCell->getRow() == n->getRow() {
-      tempCell->setColNext(tempCell->getRowNext()->getRowNext());
-    }
-  }
+  tempCell->setColNext(tempCell->getColNext()->getColNext());
 }
 
 template<typename T>
